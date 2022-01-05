@@ -1,4 +1,5 @@
 import pkg from "../package.json";
+import schemas from "./schemas/index.js";
 
 /**
  * @summary Import and call this function to add this plugin to your API.
@@ -7,8 +8,11 @@ import pkg from "../package.json";
  */
 export default async function register(app) {
   await app.registerPlugin({
-    label: "Plugin Example",
-    name: "plugin-example",
-    version: pkg.version
+    label: "Accounts extension",
+    name: "accounts-extension",
+    version: pkg.version,
+    graphQL: {
+      schemas
+    }
   });
 }

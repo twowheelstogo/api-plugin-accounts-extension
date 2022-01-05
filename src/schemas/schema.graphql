@@ -1,0 +1,77 @@
+type CustomAddress {
+  _id: ID
+  description: String
+  address: String
+  reference: String
+  geolocation: Geolocation
+  metaddress: Metaddress
+}
+
+extend type AddressEdge {
+    node: CustomAddress
+}
+
+extend type AddressConnection {
+    nodes: [CustomAddress]
+}
+
+input CustomAddressInput {
+  _id: ID
+  description: String
+  address: String
+  reference: String
+  geolocation: GeolocationInput
+  metaddress: MetaddressInput
+}
+
+extend input AddAccountAddressBookEntryInput {
+    address: CustomAddressInput!
+}
+
+extend type AddAccountAddressBookEntryPayload {
+    address: CustomAddress
+}
+
+extend input UpdateAccountAddressBookEntryInput {
+    updates: CustomAddressInput!
+}
+
+extend type UpdateAccountAddressBookEntryPayload {
+    address: CustomAddress
+}
+
+extend input RemoveAccountAddressBookEntryInput {
+    updates: CustomAddressInput!
+}
+
+extend type RemoveAccountAddressBookEntryPayload {
+    address: CustomAddress
+}
+
+extend type FulfillmentGroup {
+    shippingAddress: CustomAddress
+}
+
+extend type FulfillmentData {
+    shippingAddress: CustomAddress
+}
+
+extend type ShippingOrderFulfillmentGroupData {
+    shippingAddress: CustomAddress
+}
+
+extend type Payment {
+    billingAddress: CustomAddress
+}
+
+extend input SetShippingAddressOnCartInput {
+    address: CustomAddressInput!
+}
+
+extend input OrderFulfillmentGroupDataInput {
+    shippingAddress: CustomAddress
+}
+
+extend input PaymentInput {
+    billingAddress: CustomAddress
+}
